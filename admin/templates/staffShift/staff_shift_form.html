@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Staff Shift Form{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Edit Staff Shift{% else %}Add New Staff Shift{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'staff_shift_list' %}">Back to Staff Shifts List</a>
+{% endblock %}
+

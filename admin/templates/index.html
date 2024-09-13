@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Bosh sahifa{% endblock %}
+
+{% block additional_styles %}
+<style>
+    .home-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .welcome-section {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .welcome-title {
+        font-size: 32px;
+        color: #1877f2;
+        margin-bottom: 10px;
+    }
+    .welcome-subtitle {
+        font-size: 18px;
+        color: #606770;
+    }
+    .features-section {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .feature-card {
+        flex-basis: calc(33.333% - 20px);
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+    .feature-icon {
+        font-size: 36px;
+        color: #1877f2;
+        margin-bottom: 10px;
+    }
+    .feature-title {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .feature-description {
+        font-size: 14px;
+        color: #606770;
+    }
+    .cta-section {
+        text-align: center;
+        background-color: #f0f2f5;
+        padding: 40px;
+        border-radius: 8px;
+    }
+    .cta-title {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+    .cta-button {
+        display: inline-block;
+        background-color: #1877f2;
+        color: #fff;
+        padding: 12px 24px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+    .cta-button:hover {
+        background-color: #166fe5;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <section class="welcome-section">
+        <h1 class="welcome-title">Xush kelibsiz!</h1>
+        <p class="welcome-subtitle">Bizning xodimlarni boshqarish tizimimizga xush kelibsiz.</p>
+    </section>
+
+    <section class="features-section">
+        <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h2 class="feature-title">Xodimlar ro'yxati</h2>
+            <p class="feature-description">Barcha xodimlar haqida ma'lumotlarni ko'ring va boshqaring.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🕒</div>
+            <h2 class="feature-title">Smenalar jadvali</h2>
+            <p class="feature-description">Xodimlarning ish smenalarini rejalashtiring va nazorat qiling.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h2 class="feature-title">Hisobotlar</h2>
+            <p class="feature-description">Xodimlar faoliyati bo'yicha batafsil hisobotlarni ko'ring.</p>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2 class="cta-title">Hoziroq boshlang!</h2>
+        <a href="{% url 'staff_create' %}" class="cta-button">Xodim qo'shish</a>
+    </section>
+</div>
+{% endblock %}

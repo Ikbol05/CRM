@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Qidiruv Natijalari{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Qidiruv Natijalari</h2>
+
+    <form method="GET" action="{% url 'search_view' %}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Qidirish..." value="{{ query|default:'' }}">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Qidirish</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="search-results">
+        {% include 'search_results_partial.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    $(document).ready(function() {
+        $('form').on('submit', function(e) {
+            e.preventDefault();
+            var query = $('input[name="q"]').val();
+            $.ajax({
+                url: '{% url "search" %}',
+                data: {
+                    'q': query
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#search-results').html(data.html);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

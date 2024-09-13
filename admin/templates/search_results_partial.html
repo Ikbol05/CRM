@@ -1,0 +1,22 @@
+{% if results %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Xodim</th>
+                <th>Sana</th>
+                <th>Holat</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for attendance in results %}
+            <tr>
+                <td>{{ attendance.staff.first_name }} {{ attendance.staff.last_name }}</td>
+                <td>{{ attendance.date }}</td>
+                <td>{% if attendance.is_present %}Kelgan{% else %}Kelmagan{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="text-muted">Natijalar topilmadi.</p>
+{% endif %}

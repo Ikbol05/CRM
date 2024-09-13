@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Staff Attendance Detail{% endblock %}
+
+{% block content %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Staff Attendance Detail</h1>
+                    <table class="table">
+                        <tr>
+                            <th>Staff:</th>
+                            <td>{{ attendance.staff }}</td>
+                        </tr>
+                        <tr>
+                            <th>Check In:</th>
+                            <td>{{ attendance.check_in }}</td>
+                        </tr>
+                        <tr>
+                            <th>Check Out:</th>
+                            <td>{{ attendance.check_out }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date:</th>
+                            <td>{{ attendance.date }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status:</th>
+                            <td>{{ 'Present' if attendance.is_present else 'Absent' }}</td>
+                        </tr>
+                    </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        <a href="{% url 'staff_attendance_update' pk=attendance.pk %}" class="btn btn-primary me-2">Edit</a>
+                        <a href="{% url 'staff_attendance_delete' pk=attendance.pk %}" class="btn btn-danger me-2">Delete</a>
+                        <a href="{% url 'staff_attendance_list' %}" class="btn btn-secondary">Back to Staff Attendance List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

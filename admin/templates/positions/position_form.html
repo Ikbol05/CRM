@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if form.instance.pk %}Lavozimni tahrirlash{% else %}Yangi lavozim qo'shish{% endif %}{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">{% if form.instance.pk %}Lavozimni tahrirlash{% else %}Yangi lavozim qo'shish{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small class="form-text">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <div class="invalid-feedback">{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div class="btn-group">
+            <button type="submit" class="btn btn-primary me-2">Saqlash</button>
+            <a href="{% url 'position_list' %}" class="btn btn-secondary">Lavozimlar ro'yxatiga qaytish</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

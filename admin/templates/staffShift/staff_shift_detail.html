@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Staff Shift Detail{% endblock %}
+
+{% block content %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Staff Shift Detail</h1>
+                    <table class="table">
+                        <tr>
+                            <th>Staff:</th>
+                            <td>{{ staff_shift.staff }}</td>
+                        </tr>
+                        <tr>
+                            <th>Shift:</th>
+                            <td>{{ staff_shift.shift }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date:</th>
+                            <td>{{ staff_shift.date }}</td>
+                        </tr>
+                    </table>
+                    <div class="d-flex justify-content-center mt-4">
+                        <a href="{% url 'staff_shift_update' pk=staff_shift.pk %}" class="btn btn-primary me-2">Edit</a>
+                        <a href="{% url 'staff_shift_delete' pk=staff_shift.pk %}" class="btn btn-danger me-2">Delete</a>
+                        <a href="{% url 'staff_shift_list' %}" class="btn btn-secondary">Back to Staff Shifts List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

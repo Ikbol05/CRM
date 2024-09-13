@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title text-center mb-4">Positions List</h1>
+                    <div class="d-flex justify-content-end mb-3">
+                        <a href="{% url 'position_create' %}" class="btn btn-primary">Add New Position</a>
+                    </div>
+                    <div class="list-group">
+                        {% for position in positions %}
+                            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <a href="{% url 'position_detail' pk=position.pk %}" class="flex-grow-1 text-decoration-none text-dark">
+                                    {{ position.title }}
+                                </a>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'position_update' pk=position.pk %}" class="btn btn-outline-primary btn-sm">Edit</a>
+                                    <a href="{% url 'position_delete' pk=position.pk %}" class="btn btn-outline-danger btn-sm">Delete</a>
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="text-center">
+                                <p>No positions available.</p>
+                                <a href="{% url 'position_create' %}" class="btn btn-primary">Add New Position</a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
